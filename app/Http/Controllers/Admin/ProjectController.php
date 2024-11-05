@@ -54,6 +54,8 @@ class ProjectController extends Controller
 
         $data = $request->all();
 
+        $data['slug'] = str()->slug($data['title']);
+
         if(isset($data['image'])) {
             $imgPath = Storage::disk('public')->put('uploads', $data['image']);
             $data['image'] = $imgPath;

@@ -25,12 +25,15 @@ class ProjectSeeder extends Seeder
         Schema::withoutForeignKeyConstraints(function () {
             Project::truncate();
         });
+
         for ($i=0; $i < 10; $i++) {
-            
+            $name = fake()->company();
+            $slug = str()->slug($name);
             $randomType = Type::inRandomOrder()->first();
 
             $project = Project::create([
-                'title' => fake()->company(),
+                'title' => $name,
+                'slug' => $slug,
                 'description' => fake()->sentence(5),
                 'category' => fake()->word(2, true),
                 'type_id' => $randomType->id
