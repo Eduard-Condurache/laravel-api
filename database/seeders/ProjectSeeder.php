@@ -26,7 +26,7 @@ class ProjectSeeder extends Seeder
             Project::truncate();
         });
 
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < 100; $i++) {
             $name = fake()->company();
             $slug = str()->slug($name);
             $randomType = Type::inRandomOrder()->first();

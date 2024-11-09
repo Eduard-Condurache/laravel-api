@@ -35,9 +35,8 @@ class ProjectController extends Controller
         else {
             return response()->json([
                 'success' => false,
-                'code' => 404,
                 'message' => 'Not found'
-            ]);
+            ], 404);
         }
 
         
