@@ -18,6 +18,21 @@ class Project extends Model
         'type_id'
     ];
 
+    protected $appends = ['full_image_url'];
+
+    // Custom attributes
+
+    public function getFullImageUrlAttribute() {
+        
+        $fullImageUrl = null;
+        
+        if($this->image) {
+            $fullImageUrl = asset('storage/'.$this->image);
+        }
+
+        return $fullImageUrl;
+    }
+
     // Relations
 
     public function type() {
