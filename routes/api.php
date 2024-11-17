@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\API\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,7 @@ Route::name('api.')->group(function () {
         'index',
         'show'
     ]);
+
+    Route::post('/new-contact', [ContactController::class, 'store'])->name('new-contact');
 
 });
