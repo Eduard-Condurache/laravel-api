@@ -12,9 +12,13 @@ use PhpParser\Node\Stmt\TryCatch;
 class ContactController extends Controller
 {
     public function store(Request $request) {
+
+        $data = $request->validate([
+            'name' => 'required|min:3|max:64',
+            'email' => 'required|email|min:6|max:255'
+        ]);
         
         try {
-            $data = $request->all();
 
             $contact = Contact::create($data);
 
