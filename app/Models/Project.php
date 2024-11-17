@@ -33,6 +33,29 @@ class Project extends Model
         return $fullImageUrl;
     }
 
+    
+    // Functions
+
+    public static function getUniqueSlug($title) {
+        $originalSlug = str()->slug($title);
+
+        $slug = $originalSlug;
+
+        $existingProject = Project::where('slug', $slug)->first();
+
+        $counter = 1;
+
+        while($existingProject != null) {
+            $slug = $originalSlug.'-'.$counter;
+
+            $existingProject = Project::where('slug', $slug)->first();
+
+            $counter = $counter + 1;
+        }
+
+        return $slug;
+    } 
+
     // Relations
 
     public function type() {

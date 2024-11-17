@@ -27,8 +27,8 @@ class ProjectSeeder extends Seeder
         });
 
         for ($i=0; $i < 100; $i++) {
-            $name = fake()->company();
-            $slug = str()->slug($name);
+            $name = fake()->state();
+            $slug = Project::getUniqueSlug($name);
             $randomType = Type::inRandomOrder()->first();
 
             $project = Project::create([

@@ -28,6 +28,9 @@ class TypeSeeder extends Seeder
             'Web Development',
             'Game Development',
             'VLR Stats',
+            'VLR Stats',
+            'VLR Stats',
+            'VLR Stats',
             'E-Commerce',
             'Blockchain',
             'Indie rpg Game',
@@ -40,7 +43,7 @@ class TypeSeeder extends Seeder
         foreach ($allTypes as $type) {
             $type = Type::create([
                 'name' => $type,
-                'slug' => str()->slug($type),
+                'slug' => Type::getUniqueSlug($type),
                 'description' => fake()->sentence()
             ]);
         }
