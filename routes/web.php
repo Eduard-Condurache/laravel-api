@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\MainController as AdminMainController;
 use App\Http\Controllers\Admin\TypeController as AdminTypeController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\TechnologyController as AdminTechnologyController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::prefix('admin')
     Route::resource('technologies', AdminTechnologyController::class);
 
     Route::resource('projects', AdminProjectController::class);
+
+    Route::resource('contacts', AdminContactController::class)->only([
+        'index',
+        'show',
+        'destroy',
+    ]);
 
 });
 
